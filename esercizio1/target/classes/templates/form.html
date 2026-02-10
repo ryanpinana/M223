@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Form Utente</title>
+</head>
+<body>
+<h1>Form inserimento utente</h1>
+
+<form method="post" th:action="@{/user/insert1}" th:object="${user}">
+    <label for="id">ID:</label>
+    <input type="text" id="id" th:field="*{id}">
+    <br>
+    <label for="name">Nome:</label>
+    <input type="text" id="name" th:field="*{name}">
+    <br>
+    <label for="surename">Cognome:</label>
+    <input type="text" id="surename" th:field="*{surname}">
+    <br>
+    <input type="submit" value="Aggiungi utente">
+</form>
+
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Surname</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="user : ${users.values()}">
+        <td th:text="${user.id}"></td>
+        <td th:text="${user.name}"></td>
+        <td th:text="${user.surname}"></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
