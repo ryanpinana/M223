@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>New Product</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<div th:replace="partials/navbar :: navbar"></div>
+
+<form method="post" th:action="@{/newproduct}" th:object="${product}">
+  <label for="id">ID:</label>
+  <input type="text" id="id" th:field="*{id}">
+  <span th:if="${#fields.hasErrors('id')}" th:errors="${product.id}">Id Error</span>
+  <br>
+  <label for="name">Nome:</label>
+  <input type="text" id="name" th:field="*{name}">
+  <span th:if="${#fields.hasErrors('name')}" th:errors="${product.name}">Name Error</span>
+  <br>
+  <label for="name">Description:</label>
+  <input type="text" id="description" th:field="*{description}">
+  <span th:if="${#fields.hasErrors('description')}" th:errors="${product.description}">Description Error</span>
+  <br>
+  <label for="price">Price:</label>
+  <input type="text" id="price" th:field="*{price}">
+  <span th:if="${#fields.hasErrors('price')}" th:errors="${product.price}">Price Error</span>
+  <br>
+  <label for="expirationDate">Date:</label>
+  <input type="date" id="expirationDate" th:field="*{expirationDate}">
+  <span th:if="${#fields.hasErrors('expirationDate')}" th:errors="${product.expirationDate}">Date Error</span>
+  <br>
+  <input type="submit" value="Aggiungi prodotto">
+</form>
+</body>
+</html>

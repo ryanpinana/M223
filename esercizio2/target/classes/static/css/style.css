@@ -1,0 +1,152 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    min-height: 110vh;
+    padding: 40px;
+    color: #333;
+}
+
+/*-- Titoli pagine --*/
+h1 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: white;
+}
+
+/*--- Card container ---*/
+form, table {
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0,0,0, 0.15);
+    margin: auto;
+}
+
+/*--- Form ---*/
+form {
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+label {
+    font-weight: bold;
+}
+
+input[type="text"], input[type="date"] {
+    padding: 10px;
+     border-radius: 8px;
+    border: 1px solid #ccc;
+    transition: 0.3s;
+    font-size: 14px;
+}
+
+input:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 5px rgba(102, 126, 234, 0.5);
+}
+
+input[type="submit"] {
+    background: #667eea;
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+input[type="submit"]:hover {
+    background: #5a67d8;
+}
+
+/*--- Errori ---*/
+span {
+    color: red;
+    font-size: 13px;
+}
+
+/*--- Tabelle ---*/
+table {
+    width: 90%;
+    max-width: 900px;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+thead {
+    background-color: #667eea;
+    color: white;
+}
+
+th, td {
+    padding: 12px;
+}
+
+tbody tr:nth-child(even){
+    background-color: #f3f4f6;
+}
+
+tbody tr:hover{
+    background-color: #e2e8f0;
+    transition: 0.3s;
+}
+
+/*--- Dettaglio ---*/
+div table {
+    width: 70%;
+}
+
+/*--- Messaggio non trovato ---*/
+p {
+    text-align: center;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 400px;
+    margin: 40px auto;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+/*--- Navbar ---*/
+.navbar {
+    background: white;
+    padding: 15px 40px;
+    border-radius: 12px;
+    margin-bottom: 40px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 18px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #667eea;
+}
+
+.nav-links a {
+    margin-left: 20px;
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+.nav-links a:hover {
+    color: #667eea;
+}

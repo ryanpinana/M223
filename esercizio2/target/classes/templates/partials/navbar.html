@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<nav class="navbar" th:fragment="navbar">
+    <div class="nav-container">
+        <a th:href="@{/products}" class="logo">ProductManager</a>
+
+        <div class="nav-links">
+            <a th:href="@{/products}">Lista Prodotti</a>
+            <a th:href="@{/newproduct}">Nuovo Prodotto</a>
+        </div>
+    </div>
+</nav>
+
+</body>
+</html>
