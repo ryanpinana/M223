@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Form Inserimento</title>
+</head>
+<body>
+<h1>Form di inserimento di nuovi prodotti</h1>
+
+<form method="post" th:action="@{/items/insert}" th:object="${item}">
+    <label for="code">Codice: </label>
+    <input type="text" id="code" th:field="*{code}" placeholder="Inserisci codice">
+    <span th:if="${#fields.hasErrors('code')}" th:errors="${item.code}">Code Error</span>
+    <br>
+    <label for="type">Tipo: </label>
+    <input type="text" id="type" th:field="*{type}" placeholder="Inserisci tipo">
+    <span th:if="${#fields.hasErrors('type')}" th:errors="${item.type}">Type Error</span>
+    <br>
+    <label for="name">Nome: </label>
+    <input type="text" id="name" th:field="*{name}" placeholder="Inserisci nome">
+    <span th:if="${#fields.hasErrors('name')}" th:errors="${item.name}">Name Error</span>
+    <br>
+    <label for="price">Prezzo: </label>
+    <input type="text" id="price" th:field="*{price}" placeholder="Inserisci prezzo">
+    <span th:if="${#fields.hasErrors('price')}" th:errors="${item.price}">Price Error</span>
+    <br>
+    <label for="itemCount">Num. Prodotti: </label>
+    <input type="text" id="itemCount" th:field="*{itemCount}" placeholder="Inserisci numero di Prodotti">
+    <span th:if="${#fields.hasErrors('itemCount')}" th:errors="${item.itemCount}">ItemCount Error</span>
+    <br>
+    <input type="submit" value="Invia">
+</form>
+</body>
+</html>

@@ -1,0 +1,17 @@
+package ch.samt.blogs.data;
+
+import ch.samt.blogs.models.Post;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+import java.util.List;
+
+@Repository
+public interface PostRepository extends JpaRepository<Post, Long> {
+
+    //@Query("SELECT * FROM customer WHERE LOWER(surname) = LOWER(:surname)")
+    List<Post> findByAuthor(String author);
+
+    List<Post> findTop2ByOrderByLikesDesc();
+
+}

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>PostList</title>
+</head>
+<body>
+
+<h1>Lista Post</h1>
+
+<a href="/blog/new">Nuovo Post</a>
+<a href="/blog/best">Best</a>
+
+<table border="1">
+    <tr>
+        <th>Titolo</th>
+        <th>Autore</th>
+        <th>Like</th>
+        <th>Azioni</th>
+    </tr>
+
+    <tr th:each="post : ${posts}">
+        <td th:text="${post.title}"></td>
+        <td th:text="${post.author}"></td>
+        <td th:text="${post.likes}"></td>
+        <td>
+            <a th:href="@{/blog/post(postid=${post.id})}">Dettaglio</a>
+            <a th:href="@{/blog/like(postid=${post.id})}">👍</a>
+        </td>
+    </tr>
+</table>
+
+</body>
+</html>

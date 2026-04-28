@@ -1,0 +1,45 @@
+spring:
+  application:
+    name: Blog
+  profiles:
+    active: dev
+
+---
+
+spring:
+  config:
+    activate:
+      on-profile: dev
+  datasource:
+    generate-unique-name: false
+    driver-class-name: org.h2.Driver
+    name: BlogDB-Dev
+  sql:
+    init:
+      data-locations: classpath:/dataDev.sql
+      mode: always
+
+server:
+  port: 8080
+
+---
+
+spring:
+  config:
+    activate:
+      on-profile: prod
+  datasource:
+    generate-unique-name: false
+    driver-class-name: org.h2.Driver
+    name: BlogDB-Prod
+  sql:
+    init:
+      data-locations: classpath:/dataProd.sql
+      mode: always
+
+server:
+  port: 8090
+
+---
+
+
