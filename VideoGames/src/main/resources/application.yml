@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: Customer
+  profiles:
+    active: dev
+  datasource:
+    generate-unique-name: false
+    driver-class-name: org.h2.Driver
+    name: DB_VideoGames
+  sql:
+    init:
+      data-locations: classpath:/data.sql
+      mode: always

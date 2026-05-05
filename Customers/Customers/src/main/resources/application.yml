@@ -1,0 +1,39 @@
+spring:
+  application:
+    name: Customer
+  profiles:
+    active: dev
+
+---
+
+spring:
+  config:
+    activate:
+      on-profile: dev
+  datasource:
+    generate-unique-name: false
+    driver-class-name: org.h2.Driver
+    name: CustomerDB-dev
+  sql:
+    init:
+      data-locations: classpath:/addressData.sql, classpath:/customerData.sql, classpath:/reservationData.sql
+      mode: always
+server:
+  port: 8080
+
+---
+
+spring:
+  config:
+    activate:
+      on-profile: prod
+  datasource:
+    generate-unique-name: false
+    driver-class-name: org.h2.Driver
+    name: CustomerDB-prod
+  sql:
+    init:
+      data-locations: classpath:/addressData.sql, classpath:/customerData.sql, classpath:/reservationData.sql
+      mode: always
+server:
+  port: 8090

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Customers</title>
+</head>
+<body>
+<h1>Welcome</h1>
+
+<form method="post" th:object="${player}">
+    <!--<label for="id">ID:</label>
+    <input type="text" id="id" th:field="*{id}" placeholder="Inserisci Id">
+    <span th:if="${#fields.hasErrors('id')}" th:errors="${customer.id}">Id Error</span>
+    <br>-->
+    <label for="name">Name: </label>
+    <input type="text" id="name" th:field="*{name}" placeholder="Inserisci nome">
+    <span th:if="${#fields.hasErrors('name')}" th:errors="${player.name}">Name Error</span>
+    <br>
+    <label for="age">Age: </label>
+    <input type="text" id="age" th:field="*{age}" placeholder="Inserisci cognome">
+    <span th:if="${#fields.hasErrors('age')}" th:errors="${player.age}">Age Error</span>
+    <br>
+    <label for="nationality">Nationality: </label>
+    <input type="text" id="nationality" th:field="*{nationality}" placeholder="Inserisci Elo">
+    <span th:if="${#fields.hasErrors('nationality')}" th:errors="${player.nationality}">Nationality Error</span>
+    <br>
+    <label for="gameProfile">Game Profile: </label>
+    <input type="text" id="gameProfile" th:field="*{gameprofile}" placeholder="Inserisci la strada">
+    <span th:if="${#fields.hasErrors('gameprofile')}" th:errors="${player.gameprofile}">GameProfile Error</span>
+    <br>
+    <br>
+    <select name="teamId" th:field="*{team}">
+        <option th:each="team : ${teams}"
+                th:value="${team.id}"
+                th:text="${team.name}">
+        </option>
+    </select>
+    <span th:if="${#fields.hasErrors('team')}" th:errors="${player.team}">Team Error</span>
+    <br>
+    <input type="submit" value="Invia">
+</form>
+
+<form method="get" th:action="@{/gameProfile/list}">
+    <input type="submit" value="Lista Clienti">
+</form>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista Clienti</title>
+</head>
+<body>
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>GamerTag</th>
+        <th>GamesOwned</th>
+        <th>Elo</th>
+        <th>Achivements</th>
+        <th>Deleted</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="profile : ${profiles}">
+        <td th:text="${profile.id}"></td>
+        <td th:text="${profile.gamerTag}"></td>
+        <td th:text="${profile.gamesOwned}"></td>
+        <td th:text="${profile.elo}"></td>
+        <td th:text="${profile.achivements}"></td>
+        <td th:text="${profile.deleted}"></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

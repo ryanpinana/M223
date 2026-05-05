@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Customers</title>
+</head>
+<body>
+<h1>Welcome</h1>
+
+<form method="post" th:object="${customer}">
+    <!--<label for="id">ID:</label>
+    <input type="text" id="id" th:field="*{id}" placeholder="Inserisci Id">
+    <span th:if="${#fields.hasErrors('id')}" th:errors="${customer.id}">Id Error</span>
+    <br>-->
+    <label for="nome">Nome:</label>
+    <input type="text" id="nome" th:field="*{name}" placeholder="Inserisci nome">
+    <span th:if="${#fields.hasErrors('name')}" th:errors="${customer.name}">Name Error</span>
+    <br>
+    <label for="cognome">Cognome:</label>
+    <input type="text" id="cognome" th:field="*{surname}" placeholder="Inserisci cognome">
+    <span th:if="${#fields.hasErrors('surname')}" th:errors="${customer.surname}">Surname Error</span>
+    <br>
+    <label for="eta">Età:</label>
+    <input type="text" id="eta" th:field="*{age}" placeholder="Inserisci eta">
+    <span th:if="${#fields.hasErrors('age')}" th:errors="${customer.age}">Age Error</span>
+    <br>
+    <label for="street">Strada:</label>
+    <input type="text" id="street" th:field="*{address.street}" placeholder="Inserisci la strada">
+    <span th:if="${#fields.hasErrors('address.street')}" th:errors="${customer.address.street}">Street Error</span>
+    <br>
+    <label for="num">Numero:</label>
+    <input type="text" id="num" th:field="*{address.num}" placeholder="Inserisci numero">
+    <span th:if="${#fields.hasErrors('address.num')}" th:errors="${customer.address.num}">Number Error</span>
+    <br>
+    <label for="zip">ZIP:</label>
+    <input type="text" id="zip" th:field="*{address.zip}" placeholder="Inserisci ZIP">
+    <span th:if="${#fields.hasErrors('address.zip')}" th:errors="${customer.address.zip}">Zip Error</span>
+    <br>
+    <label for="city">Città:</label>
+    <input type="text" id="city" th:field="*{address.city}" placeholder="Inserisci città">
+    <span th:if="${#fields.hasErrors('address.city')}" th:errors="${customer.address.city}">City Error</span>
+    <br>
+    <label for="nation">Nazione:</label>
+    <input type="text" id="nation" th:field="*{address.nation}" placeholder="Inserisci nazione">
+    <span th:if="${#fields.hasErrors('address.nation')}" th:errors="${customer.address.nation}">Nation Error</span>
+    <br>
+    <br>
+    <input type="submit" value="Invia">
+</form>
+
+<form method="get" th:action="@{/customers}">
+    <input type="submit" value="Lista Clienti">
+</form>
+</body>
+</html>

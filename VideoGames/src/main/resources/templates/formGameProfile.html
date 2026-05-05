@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Customers</title>
+</head>
+<body>
+<h1>Welcome</h1>
+
+<form method="post" th:object="${gameProfile}">
+    <!--<label for="id">ID:</label>
+    <input type="text" id="id" th:field="*{id}" placeholder="Inserisci Id">
+    <span th:if="${#fields.hasErrors('id')}" th:errors="${customer.id}">Id Error</span>
+    <br>-->
+    <label for="gamerTag">GamerTag:</label>
+    <input type="text" id="gamerTag" th:field="*{gamerTag}" placeholder="Inserisci nome">
+    <span th:if="${#fields.hasErrors('gamerTag')}" th:errors="${gameProfile.gamerTag}">gamerTag Error</span>
+    <br>
+    <label for="gamesOwned">Games Owned:</label>
+    <input type="text" id="gamesOwned" th:field="*{gamesOwned}" placeholder="Inserisci cognome">
+    <span th:if="${#fields.hasErrors('gamesOwned')}" th:errors="${gameProfile.gamesOwned}">gamesOwned Error</span>
+    <br>
+    <label for="elo">Elo:</label>
+    <input type="text" id="elo" th:field="*{elo}" placeholder="Inserisci Elo">
+    <span th:if="${#fields.hasErrors('elo')}" th:errors="${gameProfile.elo}">Elo Error</span>
+    <br>
+    <label for="achivements">Achivements:</label>
+    <input type="text" id="achivements" th:field="*{achivements}" placeholder="Inserisci la strada">
+    <span th:if="${#fields.hasErrors('achivements')}" th:errors="${gameProfile.achivements}">Achivements Error</span>
+    <br>
+    <br>
+    <input type="submit" value="Invia">
+</form>
+
+<form method="get" th:action="@{/gameProfile/list}">
+    <input type="submit" value="Lista Clienti">
+</form>
+</body>
+</html>
