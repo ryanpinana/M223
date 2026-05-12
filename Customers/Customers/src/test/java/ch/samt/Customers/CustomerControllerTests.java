@@ -1,6 +1,7 @@
 package ch.samt.Customers;
 
 import ch.samt.Customers.data.CustomerRepository;
+import ch.samt.Customers.data.MealGroupRepository;
 import ch.samt.Customers.model.Customer;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +27,9 @@ public class CustomerControllerTests {
 
     @Autowired
     private CustomerRepository customerRepository;
+
+    @Autowired
+    private MealGroupRepository mealGroupRepository;
 
     @Test
     public void testLoadCustomers() throws Exception {
@@ -88,6 +92,23 @@ public class CustomerControllerTests {
                 .andExpect(view().name("customerList"))  // Verifica che la vista sia "customerList"
                 .andExpect(model().attributeExists("customers"))  // Verifica che il modello contenga "customers"
                 .andExpect(model().attribute("customers", customerRepository.findBySurname("Rossi")));  // Verifica che "customer" contenga il risultato della query
+    }
+
+    @Test
+    public void testLoadMealGroups() throws Exception {
+        mockMvc.perform(get("/customers/mealgroups"))
+                .andExpect(status().isOk())
+                .andExpect(view().name("CustomerGroups"))
+                .andExpect(model().attribute("mealGroups", mealGroupRepository.findAll()))
+                .andExpect(model().attribute("mealGroups", hasSize(3)))
+                .andExpect(model().attribute("mealGroups",
+                        hasItem(hasProperty("name", is("Colazione")))))
+                .andExpect(model().attribute("mealGroups", hasItem(hasProperty("customers",
+                        hasItem(hasProperty("name", is("Mario")))))))
+                .andExpect(model().attribute("mealGroups", hasItem(hasProperty("customers",
+                        hasItem(hasProperty("surname", is("Bianchi"))))))
+                );
+
     }
 
 //    @Test

@@ -43,4 +43,11 @@ public class Customer {
     @ToString.Exclude
     @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
     public List<Reservation> reservations;
+
+    @ManyToMany
+    @JoinTable(name = "customer_mealgroup",
+            joinColumns = @JoinColumn(name = "customer_id"),
+            inverseJoinColumns = @JoinColumn(name = "mealgroup_id"))
+    @ToString.Exclude
+    public List<MealGroup> mealGroups;
 }

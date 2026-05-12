@@ -16,7 +16,7 @@ spring:
     name: CustomerDB-dev
   sql:
     init:
-      data-locations: classpath:/addressData.sql, classpath:/customerData.sql, classpath:/reservationData.sql
+      data-locations: classpath:/addressData.sql, classpath:/customerData.sql, classpath:/reservationData.sql, classpath:/mealGroupData.sql
       mode: always
 server:
   port: 8080
@@ -33,7 +33,7 @@ spring:
     name: CustomerDB-prod
   sql:
     init:
-      data-locations: classpath:/addressData.sql, classpath:/customerData.sql, classpath:/reservationData.sql
+      data-locations: classpath:/addressData.sql, classpath:/customerData.sql, classpath:/reservationData.sql, classpath:/mealGroupData.sql
       mode: always
 server:
   port: 8090

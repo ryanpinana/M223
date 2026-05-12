@@ -2,7 +2,9 @@ package ch.samt.Customers.controller;
 
 import ch.samt.Customers.data.CustomerRepository;
 import ch.samt.Customers.model.Customer;
+import ch.samt.Customers.model.MealGroup;
 import ch.samt.Customers.service.CustomerService;
+import ch.samt.Customers.service.MealGroupService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,10 +18,12 @@ import java.util.List;
 public class CustomerController {
 
     private CustomerService customerService;
+    private MealGroupService mealGroupService;
 
     @Autowired
-    public CustomerController(CustomerService customerService) {
+    public CustomerController(CustomerService customerService, MealGroupService mealGroupService) {
         this.customerService = customerService;
+        this.mealGroupService = mealGroupService;
     }
 
     @GetMapping("/")
@@ -69,6 +73,25 @@ public class CustomerController {
         }
         customerService.save(customer);
         return "redirect:/customers";
+    }
+
+    @GetMapping("/customers/mealgroups")
+    public String loadMealGroups(Model model) {
+        model.addAttribute("mealGroups", mealGroupService.findAll());
+        model.addAttribute("customers", customerService.findAll());
+        return "CustomerGroups";
+    }
+
+    @PostMapping("/customers/addcustomer-to-mealgroup")
+    public String addCustomerToMealGroup(@RequestParam Long customerId,
+                                         @RequestParam Long mealGroupId) {
+        MealGroup mealGroup = mealGroupService.findById(mealGroupId);
+        Customer customer = customerService.findById(customerId);
+        if (!customer.getMealGroups().contains(mealGroup)) {
+            customer.getMealGroups().add(mealGroup);
+            customerService.save(customer);
+        }
+        return "redirect:/customers/mealgroups";
     }
 
     @PostMapping("/insert")

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista Clienti</title>
+</head>
+<body>
+<div th:each="mealGroup: ${mealGroups}">
+    <div class="mytable-header" th:text="'Ospiti del gruppo ' + ${mealGroup.name} + ':'"></div>
+    <table>
+        <thead>
+            <th th:text="Nome"></th>
+            <th th:text="Cognome"></th>
+        </thead>
+        <tbody>
+        <tr th:each="customer: ${mealGroup.customers}">
+            <td th:text="${customer.name}"></td>
+            <td th:text="${customer.surname}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<br>
+<hr>
+<br>
+
+<form th:action="@{/customers/addcustomer-to-mealgroup}" method="post">
+    <label for="customerId">Customer</label>
+    <select name="customerId" id="customerId">
+        <option th:each="customer: ${customers}"
+                th:value="${customer.id}"
+                th:text="${customer.name} + ' ' + ${customer.surname}"></option>
+    </select>
+    <br>
+    <label for="mealGroupId">Group</label>
+    <select name="mealGroupId" id="mealGroupId">
+        <option th:each="mealGroup: ${mealGroups}"
+                th:value="${mealGroup.id}"
+                th:text="${mealGroup.name}"></option>
+    </select>
+    <br>
+
+    <button type="submit">Aggiungi</button>
+</form>
+</body>
